@@ -23,9 +23,9 @@ MonoBehaviour:
   - "\uD76C\uADC0"
   - "\uC804\uC124"
   RandomPotinonColor:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.1465373, b: 1, a: 1}
-  - {r: 0.16216493, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.6179246, b: 0.6179246, a: 1}
+  - {r: 0.5235849, g: 0.59271187, b: 1, a: 1}
+  - {r: 0.5810931, g: 0.9811321, b: 0.50445, a: 1}
   RandomPotinonEffect:
   - {fileID: 0}
   RandomPotinonAcid:

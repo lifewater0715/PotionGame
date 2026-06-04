@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a6c1f5df3e3300449b135db097a96fad
+guid: 20cca5f252c03904984e1b195495022a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4088670312294126702
-    second: 2c3d38f041e6f6d2_0
+      213: 1593398259786658019
+    second: Marble_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 36
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2c3d38f041e6f6d2_0
+      name: Marble_01_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 19
-        width: 56
-        height: 84
+        x: 0
+        y: 0
+        width: 59
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29be50083002247c0800000000000000
-      internalID: -4088670312294126702
+      spriteID: 3e03f4c6643ec1610800000000000000
+      internalID: 1593398259786658019
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2c3d38f041e6f6d2_0: -4088670312294126702
+      Marble_01_0: 1593398259786658019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

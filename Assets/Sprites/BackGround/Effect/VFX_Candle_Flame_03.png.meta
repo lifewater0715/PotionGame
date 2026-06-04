@@ -1,31 +1,40 @@
 fileFormatVersion: 2
-guid: 9fda1b85be2e74240b4b7e1403624943
+guid: 1ddf1e6637e5ad44da35306909d1682c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8197176057700490389
-    second: VFX_Candle_Flame_0
+      213: 6551994591423599139
+    second: VFX_Candle_Flame_03_0
   - first:
-      213: 8610482638574308262
-    second: VFX_Candle_Flame_1
+      213: -6966512825423302668
+    second: VFX_Candle_Flame_03_1
   - first:
-      213: -6217991555115554591
-    second: VFX_Candle_Flame_2
+      213: 2939364366099172333
+    second: VFX_Candle_Flame_03_2
   - first:
-      213: -2984722982403506462
-    second: VFX_Candle_Flame_3
+      213: 6761866768492174795
+    second: VFX_Candle_Flame_03_3
   - first:
-      213: -2098492932584770336
-    second: VFX_Candle_Flame_4
+      213: 3448532299042805996
+    second: VFX_Candle_Flame_03_4
   - first:
-      213: -4692488850051856520
-    second: VFX_Candle_Flame_5
+      213: -1907904882574705540
+    second: VFX_Candle_Flame_03_5
   - first:
-      213: 5077415658097969767
-    second: VFX_Candle_Flame_6
+      213: -1234777460904167336
+    second: VFX_Candle_Flame_03_6
   - first:
-      213: -706531512790478690
-    second: VFX_Candle_Flame_7
+      213: 7738688830531404389
+    second: VFX_Candle_Flame_03_7
+  - first:
+      213: 7135956939489620482
+    second: VFX_Candle_Flame_03_8
+  - first:
+      213: 5040789906812415580
+    second: VFX_Candle_Flame_03_9
+  - first:
+      213: 3957699464158613973
+    second: VFX_Candle_Flame_03_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,177 +130,243 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: VFX_Candle_Flame_0
+      name: VFX_Candle_Flame_03_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 44
-        height: 55
+        x: 14
+        y: 14
+        width: 17
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 59c1398a13832c170800000000000000
-      internalID: 8197176057700490389
+      spriteID: 3229510fd5c5dea50800000000000000
+      internalID: 6551994591423599139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_1
+      name: VFX_Candle_Flame_03_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 0
-        width: 44
-        height: 55
+        x: 56
+        y: 31
+        width: 19
+        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6abc3e8e6549e7770800000000000000
-      internalID: 8610482638574308262
+      spriteID: 4ffe075de79f15f90800000000000000
+      internalID: -6966512825423302668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_2
+      name: VFX_Candle_Flame_03_2
       rect:
         serializedVersion: 2
-        x: 88
-        y: 0
-        width: 44
-        height: 55
+        x: 104
+        y: 13
+        width: 11
+        height: 35
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e865fcff9145b9a0800000000000000
-      internalID: -6217991555115554591
+      spriteID: deb48ca4158bac820800000000000000
+      internalID: 2939364366099172333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_3
+      name: VFX_Candle_Flame_03_3
       rect:
         serializedVersion: 2
-        x: 132
-        y: 0
-        width: 44
-        height: 55
+        x: 235
+        y: 33
+        width: 16
+        height: 9
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2eef4e0e2422496d0800000000000000
-      internalID: -2984722982403506462
+      spriteID: bcd9e72000af6dd50800000000000000
+      internalID: 6761866768492174795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_4
+      name: VFX_Candle_Flame_03_4
       rect:
         serializedVersion: 2
-        x: 176
-        y: 0
-        width: 44
-        height: 55
+        x: 278
+        y: 39
+        width: 17
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e4fd9dcbc7a0e2e0800000000000000
-      internalID: -2098492932584770336
+      spriteID: ce858e8dad5abdf20800000000000000
+      internalID: 3448532299042805996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_5
+      name: VFX_Candle_Flame_03_5
       rect:
         serializedVersion: 2
-        x: 220
-        y: 0
-        width: 44
-        height: 55
+        x: 322
+        y: 13
+        width: 18
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8778d24b04ee0eeb0800000000000000
-      internalID: -4692488850051856520
+      spriteID: c7cb6e82e92c585e0800000000000000
+      internalID: -1907904882574705540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_6
+      name: VFX_Candle_Flame_03_6
       rect:
         serializedVersion: 2
-        x: 264
-        y: 0
-        width: 44
-        height: 55
+        x: 61
+        y: 14
+        width: 10
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 76a8fe5c3aa967640800000000000000
-      internalID: 5077415658097969767
+      spriteID: 858f52201703ddee0800000000000000
+      internalID: -1234777460904167336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: VFX_Candle_Flame_7
+      name: VFX_Candle_Flame_03_7
       rect:
         serializedVersion: 2
-        x: 308
-        y: 0
-        width: 44
-        height: 55
+        x: 148
+        y: 13
+        width: 11
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6f5d5dc0d33124049811c45159589f4d
-      internalID: -706531512790478690
+      spriteID: 5628b137d78556b60800000000000000
+      internalID: 7738688830531404389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Candle_Flame_03_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 13
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20233ce4703080360800000000000000
+      internalID: 7135956939489620482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Candle_Flame_03_9
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 13
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5eade686bb74f540800000000000000
+      internalID: 5040789906812415580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VFX_Candle_Flame_03_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 13
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d19de0a1b29ce630800000000000000
+      internalID: 3957699464158613973
       vertices: []
       indices: 
       edges: []
@@ -300,28 +375,27 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 54f7ee6cbd758314cbf45e7e8b9fb52f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: 861a3db94dcfa334eaeaa58cb495fa30, type: 3}
-      name: Candl_fite
+    secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":44.0,"y":55.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      VFX_Candle_Flame_0: 8197176057700490389
-      VFX_Candle_Flame_1: 8610482638574308262
-      VFX_Candle_Flame_2: -6217991555115554591
-      VFX_Candle_Flame_3: -2984722982403506462
-      VFX_Candle_Flame_4: -2098492932584770336
-      VFX_Candle_Flame_5: -4692488850051856520
-      VFX_Candle_Flame_6: 5077415658097969767
-      VFX_Candle_Flame_7: -706531512790478690
+      VFX_Candle_Flame_03_0: 6551994591423599139
+      VFX_Candle_Flame_03_1: -6966512825423302668
+      VFX_Candle_Flame_03_10: 3957699464158613973
+      VFX_Candle_Flame_03_2: 2939364366099172333
+      VFX_Candle_Flame_03_3: 6761866768492174795
+      VFX_Candle_Flame_03_4: 3448532299042805996
+      VFX_Candle_Flame_03_5: -1907904882574705540
+      VFX_Candle_Flame_03_6: -1234777460904167336
+      VFX_Candle_Flame_03_7: 7738688830531404389
+      VFX_Candle_Flame_03_8: 7135956939489620482
+      VFX_Candle_Flame_03_9: 5040789906812415580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
