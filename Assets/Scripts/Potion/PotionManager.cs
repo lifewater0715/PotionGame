@@ -58,4 +58,5 @@ public class PotionManager : MonoBehaviour
         potionAicd = potionData.Acid;
         potionPosion = potionData.Posion;
     }
+    
 }

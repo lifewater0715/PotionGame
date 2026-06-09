@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Potion
+  - Acid
+  - Heat
+  - Boil
+  - Shake
   layers:
   - Default
   - TransparentFX
@@ -11,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Potion
   - 
   - 
   - 
@@ -46,6 +51,12 @@ TagManager:
     locked: 0
   - name: PotionLiquid
     uniqueID: 1788175901
+    locked: 0
+  - name: PotionPoint
+    uniqueID: 3174252643
+    locked: 0
+  - name: PotionEffect
+    uniqueID: 1431699231
     locked: 0
   m_RenderingLayers:
   - Default

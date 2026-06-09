@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 7fac8396c74d08140b629c8d796c4842
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6577585551289209101
+    second: Potion_Move_Liquid_Overlay_0
+  - first:
+      213: 4277600743359561853
+    second: Potion_Move_Liquid_Overlay_1
+  - first:
+      213: -292617493595800673
+    second: Potion_Move_Liquid_Overlay_2
+  - first:
+      213: -1215681727637428554
+    second: Potion_Move_Liquid_Overlay_3
+  - first:
+      213: -8330235230443461534
+    second: Potion_Move_Liquid_Overlay_4
+  - first:
+      213: 976118556519855570
+    second: Potion_Move_Liquid_Overlay_5
+  - first:
+      213: -2511299753144423755
+    second: Potion_Move_Liquid_Overlay_6
+  - first:
+      213: -7479915357186456784
+    second: Potion_Move_Liquid_Overlay_7
+  - first:
+      213: 8819781947119388737
+    second: Potion_Move_Liquid_Overlay_8
+  - first:
+      213: -7636427432890085852
+    second: Potion_Move_Liquid_Overlay_9
+  - first:
+      213: 6679784530361054111
+    second: Potion_Move_Liquid_Overlay_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 22
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fe2aa76ac8b7b4a0800000000000000
+      internalID: -6577585551289209101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 22
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d70c4ee56371d5b30800000000000000
+      internalID: 4277600743359561853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 22
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9b382f90f960fbf0800000000000000
+      internalID: -292617493595800673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 3
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b6ec30e8e7012fe0800000000000000
+      internalID: -1215681727637428554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_4
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 22
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26429f1813f056c80800000000000000
+      internalID: -8330235230443461534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_5
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 22
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d5780cc7aedb8d00800000000000000
+      internalID: 976118556519855570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5baec411e22162dd0800000000000000
+      internalID: -2511299753144423755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_7
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 3
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03389e8ec90023890800000000000000
+      internalID: -7479915357186456784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_8
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 3
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1484472a3f8266a70800000000000000
+      internalID: 8819781947119388737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_9
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 3
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42ec98595b5f50690800000000000000
+      internalID: -7636427432890085852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Potion_Move_Liquid_Overlay_10
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 3
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f93f15ca3ac53bc50800000000000000
+      internalID: 6679784530361054111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Potion_Move_Liquid_Overlay_0: -6577585551289209101
+      Potion_Move_Liquid_Overlay_1: 4277600743359561853
+      Potion_Move_Liquid_Overlay_10: 6679784530361054111
+      Potion_Move_Liquid_Overlay_2: -292617493595800673
+      Potion_Move_Liquid_Overlay_3: -1215681727637428554
+      Potion_Move_Liquid_Overlay_4: -8330235230443461534
+      Potion_Move_Liquid_Overlay_5: 976118556519855570
+      Potion_Move_Liquid_Overlay_6: -2511299753144423755
+      Potion_Move_Liquid_Overlay_7: -7479915357186456784
+      Potion_Move_Liquid_Overlay_8: 8819781947119388737
+      Potion_Move_Liquid_Overlay_9: -7636427432890085852
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

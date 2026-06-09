@@ -5,15 +5,20 @@ public class RandomLight : MonoBehaviour
 {
     [SerializeField] private GameObject lightTarget;
     private Light2D lights;
+    [SerializeField] private float lightPower;
+    private float Orginlight;
 
     void Start()
     {
-        lights = lightTarget.GetComponent<Light2D>();
+        if (lightTarget.GetComponent<Light2D>() != null)
+        {
+            lights = lightTarget.GetComponent<Light2D>();
+            Orginlight = lights.intensity;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        lights.intensity = Orginlight + UnityEngine.Random.Range(-lightPower, lightPower);
     }
 }
