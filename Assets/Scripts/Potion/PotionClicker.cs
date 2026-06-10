@@ -172,6 +172,7 @@ public class PotionClicker : MonoBehaviour
 
         else if (other.gameObject.tag == "Heat")
         {
+            potionState.PotionFireing(true);
         }
 
         else if (other.gameObject.tag == null)
