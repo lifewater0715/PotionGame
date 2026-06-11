@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: PotionData
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
   RandData: {fileID: 11400000, guid: 72ffba94afe5b9e4a9a9c0b5cd614d23, type: 2}
-  PotionName: "\uC77C\uBC18"
+  PotionName: "\uD56B\uC2DD\uC2A4"
   PotionInfo: "\uC804\uC124\uC758 \uAC01\uC131\uC7AC"
-  PotionRear: nomal
-  potinonColor: {r: 1, g: 0, b: 0, a: 0}
+  PotionRear: "\uC77C\uBC18"
+  potinonColor: {r: 0.5810931, g: 0.9811321, b: 0.50445, a: 1}
   potinonEffect: {fileID: 0}
-  Acid: 0
-  Posion: 0
+  Acid: 7
+  Posion: 4.3
+  OnBoiledGlow: 1
+  OnShakedColorChange: 1
+  OnCandleChange: 1
   OnrandomInfo: 1
   OnrandomLiquid: 1
   OnrandomType: 1

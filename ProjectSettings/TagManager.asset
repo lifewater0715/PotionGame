@@ -46,6 +46,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: NPC
+    uniqueID: 614646491
+    locked: 0
+  - name: BG
+    uniqueID: 2125691991
+    locked: 0
   - name: PotionBottle
     uniqueID: 3239166617
     locked: 0
@@ -57,6 +63,9 @@ TagManager:
     locked: 0
   - name: PotionEffect
     uniqueID: 1431699231
+    locked: 0
+  - name: UI
+    uniqueID: 1005870389
     locked: 0
   m_RenderingLayers:
   - Default

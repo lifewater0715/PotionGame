@@ -4,45 +4,96 @@ using System.Collections.Generic;
 
 public class TextPopup : MonoBehaviour
 {
-    public CanvasGroup canvasGroup;
-    public TextMeshProUGUI textUI;
-    public float fadeSpeed = 2f;
-    public float typingSpeed = 0.05f;
+    private enum DialogueType
+    {
+        Default,
+        Approved,
+        Rejected
+    }
 
-    public List<string> sentences = new List<string>()
+    [Header("í…ìŠ¤íŠ¸ íŒì—…")]
+    [SerializeField] private GameObject popupObject;
+    [SerializeField] private TextMeshProUGUI textUI;
+    [SerializeField] private float typingSpeed = 0.05f;
+
+    [Header("ê¸°ë³¸ ëŒ€ì‚¬")]
+    [SerializeField] private List<string> defaultSentences = new List<string>()
     {
         "Hello!",
         "Nice to meet you.",
         "How can I help you?"
     };
 
-    private bool fadingIn;
-    private bool fadingOut;
-    private float timer;
+    [Header("í—ˆê°€ ëŒ€ì‚¬")]
+    [SerializeField] private List<string> approvedSentences = new List<string>();
+
+    [Header("ë¹„í—ˆê°€ ëŒ€ì‚¬")]
+    [SerializeField] private List<string> rejectedSentences = new List<string>();
+
     private string currentSentence;
     private float typeTimer;
     private int typeIndex;
     private bool typing;
 
+    void Awake()
+    {
+        if (popupObject == null)
+        {
+            popupObject = gameObject;
+        }
+
+        if (textUI == null)
+        {
+            textUI = popupObject.GetComponentInChildren<TextMeshProUGUI>(true);
+        }
+    }
+
     void OnEnable()
     {
-        canvasGroup.alpha = 0f;
-        fadingIn = false;
-        fadingOut = false;
-        timer = 0f;
+        typeTimer = 0f;
+        typeIndex = 0;
+        typing = false;
     }
 
     public void Show()
     {
-        Debug.Log("TextPopup Show ½ÇÇàµÊ");
-        gameObject.SetActive(true);
-        canvasGroup.alpha = 0f;
-        fadingIn = true;
-        fadingOut = false;
-        timer = 0f;
+        ShowDefault();
+    }
 
-        currentSentence = sentences[Random.Range(0, sentences.Count)];
-        Debug.Log("¼±ÅÃµÈ ¹®Àå: " + currentSentence);  // Ãß°¡
+    public void ShowDefault()
+    {
+        ShowByType(DialogueType.Default);
+    }
+
+    public void ShowApproved()
+    {
+        ShowByType(DialogueType.Approved);
+    }
+
+    public void ShowRejected()
+    {
+        ShowByType(DialogueType.Rejected);
+    }
+
+    private void ShowByType(DialogueType dialogueType)
+    {
+        if (textUI == null)
+        {
+            Debug.LogWarning("TextPopup.Show failed: TextMeshProUGUI reference is missing.", this);
+            return;
+        }
+
+        if (!HasAvailableSentenceSource(dialogueType))
+        {
+            Debug.LogWarning("TextPopup.Show failed: no dialogue data is available.", this);
+            return;
+        }
+
+        Debug.Log("TextPopup Show called", this);
+        popupObject.SetActive(true);
+
+        currentSentence = GetRandomSentence(dialogueType);
+        Debug.Log("Selected sentence: " + currentSentence, this);
         textUI.text = "";
         typeTimer = 0f;
         typeIndex = 0;
@@ -51,44 +102,19 @@ public class TextPopup : MonoBehaviour
 
     public void Hide()
     {
-        fadingOut = true;
-        fadingIn = false;
-        timer = 0f;
         typing = false;
+        popupObject.SetActive(false);
     }
 
     void Update()
     {
-        // ÆäÀÌµå ÀÎ
-        if (fadingIn)
-        {
-            timer += Time.deltaTime * fadeSpeed;
-            canvasGroup.alpha = timer;
-
-            if (timer >= 1f)
-            {
-                canvasGroup.alpha = 1f;
-                fadingIn = false;
-            }
-        }
-
-        // ÆäÀÌµå ¾Æ¿ô
-        if (fadingOut)
-        {
-            timer += Time.deltaTime * fadeSpeed;
-            canvasGroup.alpha = 1f - timer;
-
-            if (timer >= 1f)
-            {
-                canvasGroup.alpha = 0f;
-                fadingOut = false;
-                gameObject.SetActive(false);
-            }
-        }
-
-        // Å¸ÀÌÇÎ È¿°ú
         if (typing && currentSentence != null && typeIndex < currentSentence.Length)
         {
+            if (textUI == null)
+            {
+                return;
+            }
+
             typeTimer += Time.deltaTime;
             if (typeTimer >= typingSpeed)
             {
@@ -97,5 +123,39 @@ public class TextPopup : MonoBehaviour
                 typeIndex++;
             }
         }
+    }
+
+    private bool HasAvailableSentenceSource(DialogueType dialogueType)
+    {
+        List<string> selectedSentences = GetSentenceList(dialogueType);
+        return selectedSentences != null && selectedSentences.Count > 0;
+    }
+
+    private string GetRandomSentence(DialogueType dialogueType)
+    {
+        List<string> selectedSentences = GetSentenceList(dialogueType);
+        return selectedSentences[Random.Range(0, selectedSentences.Count)];
+    }
+
+    private List<string> GetSentenceList(DialogueType dialogueType)
+    {
+        switch (dialogueType)
+        {
+            case DialogueType.Approved:
+                if (approvedSentences != null && approvedSentences.Count > 0)
+                {
+                    return approvedSentences;
+                }
+                break;
+
+            case DialogueType.Rejected:
+                if (rejectedSentences != null && rejectedSentences.Count > 0)
+                {
+                    return rejectedSentences;
+                }
+                break;
+        }
+
+        return defaultSentences;
     }
 }

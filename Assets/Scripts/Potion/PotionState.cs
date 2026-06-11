@@ -3,6 +3,9 @@ using UnityEngine.Rendering.Universal;
 
 public class PotionState : MonoBehaviour
 {
+    [Header("포션 데이터")]
+    [SerializeField] private PotionManager potionManager;
+
     [Header("포션 상태 정보 가열")]
     [SerializeField] private float potionHeatLv = 0f;
     [SerializeField] private float potionHeatSpeed = 0f;
@@ -30,8 +33,17 @@ public class PotionState : MonoBehaviour
     [SerializeField] private GameObject boilAni;
     [SerializeField] private Animator boilAnimator;
     [SerializeField] private SpriteRenderer boilSpriteRenderer;
+    [SerializeField] private SpriteRenderer boilPotionRenderer;
+    [SerializeField] private Material boilPotionMaterial;
+    [SerializeField] private Color boilTargetMaterialColor = new Color(1f, 0.65f, 0.35f, 1f);
+    [SerializeField] private string boilMaterialColorProperty = "_GlowColor";
+    [SerializeField] private float boilGlowFadeSpeed = 0.35f;
     [SerializeField] private float minBoilAnimSpeed = 0.5f;
     [SerializeField] private float maxBoilAnimSpeed = 3f;
+
+    [Header("흔들기 이팩트")]
+    [SerializeField] private SpriteRenderer potionLiquidRenderer;
+    [SerializeField] private Color shakeTargetColor = new Color(0.6f, 1f, 0.75f, 1f);
 
     [Header("촛불 이팩트")]
     [SerializeField] private GameObject candleObj;
@@ -44,9 +56,15 @@ public class PotionState : MonoBehaviour
     [SerializeField] private string candleMaterialColorProperty = "_Color";
 
     private bool wasHeating;
+    private bool wasMixing;
     private bool wasFireing;
     private bool isBoilingVisualInitialized;
+    private bool isShakeVisualInitialized;
     private bool isBurningVisualInitialized;
+    private bool hasLoggedBoilMaterialPropertyWarning;
+    private float currentBoilGlowWeight;
+    private Color defaultPotionLiquidColor = Color.white;
+    private Color defaultBoilMaterialColor = Color.white;
     private Color defaultCandleLightColor = Color.white;
     private Color defaultCandleMaterialColor = Color.white;
     private Color defaultCandleSpriteColor = Color.white;
@@ -55,6 +73,7 @@ public class PotionState : MonoBehaviour
     void Update()
     {
         PotionBoiler();
+        PotionMixer();
         PotionBurner();
     }
 
@@ -104,6 +123,7 @@ public class PotionState : MonoBehaviour
         float targetAlpha = GetBoilingAlpha();
         bool isBoilingVisible = targetAlpha > 0f;
         float boilAnimSpeed = GetBoilAnimSpeed();
+        float boilWeight = UpdateBoilGlowWeight();
 
         if (boilAni != null && isBoilingVisible && !boilAni.activeSelf)
         {
@@ -111,6 +131,7 @@ public class PotionState : MonoBehaviour
         }
 
         SetBoilingAlpha(targetAlpha);
+        UpdateBoilingMaterialColor(CanApplyBoilingVisual() ? boilWeight : 0f);
 
         if (boilAni != null && !isBoilingVisible && boilAni.activeSelf)
         {
@@ -131,30 +152,61 @@ public class PotionState : MonoBehaviour
             return true;
         }
 
-        if (boilAni == null)
-        {
-            return false;
-        }
-
-        if (boilSpriteRenderer == null)
+        if (boilAni != null && boilSpriteRenderer == null)
         {
             boilSpriteRenderer = boilAni.GetComponent<SpriteRenderer>();
         }
 
-        if (boilSpriteRenderer == null)
-        {
-            return false;
-        }
-
-        if (boilAlpa == default)
+        if (boilSpriteRenderer != null && boilAlpa == default)
         {
             boilAlpa = boilSpriteRenderer.color;
         }
 
-        SetBoilingAlpha(0f);
-        boilAni.SetActive(false);
+        if (potionManager == null)
+        {
+            potionManager = GetComponent<PotionManager>();
+        }
+
+        if (boilPotionRenderer == null && potionManager != null)
+        {
+            boilPotionRenderer = potionManager.GetPotionRenderer();
+        }
+
+        if (boilPotionRenderer == null)
+        {
+            boilPotionRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        if (boilPotionRenderer != null)
+        {
+            if (boilPotionMaterial != null)
+            {
+                boilPotionRenderer.material = boilPotionMaterial;
+            }
+
+            boilPotionMaterial = boilPotionRenderer.material;
+        }
+
+        if (boilPotionMaterial != null && boilPotionMaterial.HasProperty(boilMaterialColorProperty))
+        {
+            defaultBoilMaterialColor = boilPotionMaterial.GetColor(boilMaterialColorProperty);
+        }
+
+        if (boilSpriteRenderer != null)
+        {
+            SetBoilingAlpha(0f);
+        }
+
+        currentBoilGlowWeight = 0f;
+        UpdateBoilingMaterialColor(0f);
+
+        if (boilAni != null)
+        {
+            boilAni.SetActive(false);
+        }
+
         isBoilingVisualInitialized = true;
-        return true;
+        return boilSpriteRenderer != null || boilPotionMaterial != null;
     }
     
     private void StartBoiling()
@@ -194,6 +246,40 @@ public class PotionState : MonoBehaviour
         return Mathf.Clamp01(potionHeatLv / maxPotionHeatLv) * targetAlpha;
     }
 
+    private float GetBoilingWeight()
+    {
+        if (maxPotionHeatLv <= 0f)
+        {
+            return 0f;
+        }
+
+        return Mathf.Clamp01(potionHeatLv / maxPotionHeatLv);
+    }
+
+    private float UpdateBoilGlowWeight()
+    {
+        float targetWeight = GetBoilingWeight();
+
+        if (targetWeight > currentBoilGlowWeight)
+        {
+            currentBoilGlowWeight = targetWeight;
+            return currentBoilGlowWeight;
+        }
+
+        if (boilGlowFadeSpeed <= 0f)
+        {
+            currentBoilGlowWeight = targetWeight;
+            return currentBoilGlowWeight;
+        }
+
+        currentBoilGlowWeight = Mathf.MoveTowards(
+            currentBoilGlowWeight,
+            targetWeight,
+            boilGlowFadeSpeed * Time.deltaTime
+        );
+        return currentBoilGlowWeight;
+    }
+
     private void SetBoilingAlpha(float alpha)
     {
         if (boilSpriteRenderer == null)
@@ -204,6 +290,33 @@ public class PotionState : MonoBehaviour
         Color boilColor = boilAlpa;
         boilColor.a = alpha;
         boilSpriteRenderer.color = boilColor;
+    }
+
+    private void UpdateBoilingMaterialColor(float boilWeight)
+    {
+        if (boilPotionMaterial == null)
+        {
+            return;
+        }
+
+        if (!boilPotionMaterial.HasProperty(boilMaterialColorProperty))
+        {
+            if (!hasLoggedBoilMaterialPropertyWarning)
+            {
+                Debug.LogWarning(
+                    $"PotionState: Material '{boilPotionMaterial.name}' does not have property '{boilMaterialColorProperty}'.",
+                    this
+                );
+                hasLoggedBoilMaterialPropertyWarning = true;
+            }
+
+            return;
+        }
+
+        boilPotionMaterial.SetColor(
+            boilMaterialColorProperty,
+            Color.Lerp(defaultBoilMaterialColor, boilTargetMaterialColor, boilWeight)
+        );
     }
 
     private void PotionBurner()
@@ -249,6 +362,12 @@ public class PotionState : MonoBehaviour
             return;
         }
 
+        if (!CanApplyCandleVisual())
+        {
+            ResetBurningVisual();
+            return;
+        }
+
         float fireWeight = GetBurningWeight();
 
         if (candleLight != null)
@@ -268,6 +387,86 @@ public class PotionState : MonoBehaviour
         {
             candleSpriteRenderer.color = Color.Lerp(defaultCandleSpriteColor, fireTargetSpriteColor, fireWeight);
         }
+    }
+
+    private void PotionMixer()
+    {
+        HandleMixStateChange();
+        UpdateMixingState();
+        UpdateMixingVisual();
+    }
+
+    private void HandleMixStateChange()
+    {
+        if (wasMixing == IsMixing)
+        {
+            return;
+        }
+
+        potionMixSpeed = 0f;
+        wasMixing = IsMixing;
+    }
+
+    private void UpdateMixingState()
+    {
+        if (IsMixing)
+        {
+            StartMixing();
+            return;
+        }
+
+        if (potionMixLv > 0f)
+        {
+            StopMixing();
+            return;
+        }
+
+        potionMixLv = 0f;
+        potionMixSpeed = 0f;
+    }
+
+    private void UpdateMixingVisual()
+    {
+        if (!EnsureShakeVisualInitialized())
+        {
+            return;
+        }
+
+        if (!CanApplyShakeVisual())
+        {
+            ResetMixingVisual();
+            return;
+        }
+
+        float mixWeight = GetMixingWeight();
+        potionLiquidRenderer.color = Color.Lerp(defaultPotionLiquidColor, shakeTargetColor, mixWeight);
+    }
+
+    private bool EnsureShakeVisualInitialized()
+    {
+        if (isShakeVisualInitialized)
+        {
+            return true;
+        }
+
+        if (potionLiquidRenderer == null && potionManager != null)
+        {
+            potionLiquidRenderer = potionManager.GetPotionRenderer();
+        }
+
+        if (potionLiquidRenderer == null)
+        {
+            potionLiquidRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        if (potionLiquidRenderer == null)
+        {
+            return false;
+        }
+
+        defaultPotionLiquidColor = potionLiquidRenderer.color;
+        isShakeVisualInitialized = true;
+        return true;
     }
 
     private bool EnsureBurningVisualInitialized()
@@ -341,6 +540,99 @@ public class PotionState : MonoBehaviour
         }
     }
 
+    private bool CanApplyBoilingVisual()
+    {
+        PotionData potionData = GetPotionData();
+        return potionData == null || potionData.OnBoiledGlow;
+    }
+
+    private bool CanApplyCandleVisual()
+    {
+        PotionData potionData = GetPotionData();
+        return potionData == null || potionData.OnCandleChange;
+    }
+
+    private bool CanApplyShakeVisual()
+    {
+        PotionData potionData = GetPotionData();
+        return potionData == null || potionData.OnShakedColorChange;
+    }
+
+    private PotionData GetPotionData()
+    {
+        if (potionManager == null)
+        {
+            potionManager = GetComponent<PotionManager>();
+        }
+
+        return potionManager != null ? potionManager.GetPotionData() : null;
+    }
+
+    private void SetBoilingInactive()
+    {
+        SetBoilingAlpha(0f);
+        UpdateBoilingMaterialColor(0f);
+
+        if (boilAni != null && boilAni.activeSelf)
+        {
+            boilAni.SetActive(false);
+        }
+
+        if (boilAnimator != null)
+        {
+            boilAnimator.SetBool("IsBoiling", false);
+            boilAnimator.SetFloat("BoilSpeed", 0f);
+        }
+    }
+
+    private void ResetBurningVisual()
+    {
+        if (candleLight != null)
+        {
+            candleLight.color = defaultCandleLightColor;
+        }
+
+        if (candleMat != null && candleMat.HasProperty(candleMaterialColorProperty))
+        {
+            candleMat.SetColor(candleMaterialColorProperty, defaultCandleMaterialColor);
+        }
+
+        if (candleSpriteRenderer != null)
+        {
+            candleSpriteRenderer.color = defaultCandleSpriteColor;
+        }
+    }
+
+    private void StartMixing()
+    {
+        potionMixLv = IncreaseWeightedValue(potionMixLv, ref potionMixSpeed, maxPotionMixLv);
+    }
+
+    private void StopMixing()
+    {
+        potionMixLv = DecreaseWeightedValue(potionMixLv, ref potionMixSpeed);
+    }
+
+    private float GetMixingWeight()
+    {
+        if (maxPotionMixLv <= 0f)
+        {
+            return 0f;
+        }
+
+        return Mathf.Clamp01(potionMixLv / maxPotionMixLv);
+    }
+
+    private void ResetMixingVisual()
+    {
+        if (potionLiquidRenderer == null)
+        {
+            return;
+        }
+
+        potionLiquidRenderer.color = defaultPotionLiquidColor;
+    }
+
     private float IncreaseWeightedValue(float currentValue, ref float currentSpeed, float maxValue)
     {
         currentSpeed += Time.deltaTime;
@@ -406,6 +698,21 @@ public class PotionState : MonoBehaviour
     public void PotionAciding(bool OnAcid)
     {
         IsAciding = OnAcid;
+    }
+
+    public bool IsBoiled()
+    {
+        return potionHeatLv > 0f || IsHeating;
+    }
+
+    public bool IsShaking()
+    {
+        return IsMixing;
+    }
+
+    public bool IsCandleChanged()
+    {
+        return potionFireLv > 0f || IsFireing;
     }
 
 }

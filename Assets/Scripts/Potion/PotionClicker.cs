@@ -15,6 +15,8 @@ public class PotionClicker : MonoBehaviour
     [SerializeField] private float DragAngle;
     [Header("포션 이동 움직임 정지 관측값")]
     [SerializeField] private float StopDragForce;
+    [Header("포션 흔들기 판정값")]
+    [SerializeField] private float ShakeDetectForce = 0.6f;
     [Header("포션 시작 위치")]
     [SerializeField] private GameObject potionStartPos;
     [Header("포션 복귀 시간")]
@@ -84,12 +86,14 @@ public class PotionClicker : MonoBehaviour
         Vector2 currentPosition = ClickTrg.transform.position;
 
         float moveVelocity = (currentPosition.x - lastPosition.x) / Time.deltaTime;
+        float moveSpeed = GetMoveSpeed(lastPosition, currentPosition);
         //Debug.Log("MoveVlocity = " + moveVelocity);
 
         potionAnimator = ClickTrg.transform.GetChild(1).GetComponent<Animator>();
 
         PotionAcceleration(moveVelocity,ClickTrg);
-        PotionAnimtion(moveVelocity);
+        PotionAnimtion(moveVelocity, ClickTrg);
+        UpdatePotionShakeState(moveSpeed);
     }
 
     private void PotionAcceleration(float moveVelocity, GameObject moveTrg)
@@ -101,13 +105,14 @@ public class PotionClicker : MonoBehaviour
     private void PotionDrop()
     {
         Cursor.visible = true;
+        UpdatePotionShakeState(0f);
 
         StartCoroutine(RetrunPotion(retrunSpeed, ClickTrg.transform.position, potionTrgPos.transform.position, ClickTrg));
         ClickTrg = null;
 
     }
 
-    private void PotionAnimtion(float moveVlocity)
+    private void PotionAnimtion(float moveVlocity, GameObject moveTrg)
     {
         if (moveVlocity > 0f)
         {
@@ -130,7 +135,17 @@ public class PotionClicker : MonoBehaviour
             potionAnimator.SetBool("IsMoveEnd", true);
             potionAnimator.SetBool("IsRight", false);
             potionAnimator.SetBool("IsLeft", false);
+            ResetPotionAngle(moveTrg);
         }
+    }
+
+    private void ResetPotionAngle(GameObject moveTrg)
+    {
+        moveTrg.transform.rotation = Quaternion.Slerp(
+            moveTrg.transform.rotation,
+            Quaternion.Euler(Vector3.zero),
+            DragSpeed * Time.deltaTime
+        );
     }
 
     IEnumerator RetrunPotion(float retruntime, Vector3 startpos, Vector3 targetpos, GameObject moveTrg)
@@ -145,19 +160,37 @@ public class PotionClicker : MonoBehaviour
             Vector2 lastPosition = moveTrg.transform.position;
 
             moveTrg.transform.position = Vector3.Lerp(startpos, targetpos, Mathf.Clamp01(timestack / retruntime));
-            moveTrg.transform.rotation = Quaternion.Slerp(moveTrg.transform.rotation, Quaternion.Euler(Vector3.zero), DragSpeed * Time.deltaTime);
+            ResetPotionAngle(moveTrg);
 
             Vector2 currentPosition = moveTrg.transform.position;
 
             float moveVelocity = (currentPosition.x - lastPosition.x) / Time.deltaTime;
+            float moveSpeed = GetMoveSpeed(lastPosition, currentPosition);
 
             PotionAcceleration(moveVelocity,moveTrg);
-            PotionAnimtion(moveVelocity);
+            PotionAnimtion(moveVelocity, moveTrg);
+            UpdatePotionShakeState(moveSpeed);
 
             yield return null;
         }
 
+        UpdatePotionShakeState(0f);
         transform.position = targetpos;
+    }
+
+    private float GetMoveSpeed(Vector2 lastPosition, Vector2 currentPosition)
+    {
+        return Vector2.Distance(currentPosition, lastPosition) / Time.deltaTime;
+    }
+
+    private void UpdatePotionShakeState(float moveSpeed)
+    {
+        if (potionState == null)
+        {
+            return;
+        }
+
+        potionState.PotionMixing(moveSpeed >= ShakeDetectForce);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

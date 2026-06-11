@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -29,10 +28,7 @@ public class PotionManager : MonoBehaviour
     
     void Awake()
     {
-        potionData.InputRndomData(IsRandomInfo,IsRandomImg,IsRandomType);
-        GetData();
-        
-        posionRender.color = potionColor;
+        RefreshPotionData();
     }
 
     void Update()
@@ -58,5 +54,43 @@ public class PotionManager : MonoBehaviour
         potionAicd = potionData.Acid;
         potionPosion = potionData.Posion;
     }
-    
+
+    public PotionData GetPotionData()
+    {
+        return potionData;
+    }
+
+    public SpriteRenderer GetPotionRenderer()
+    {
+        return posionRender;
+    }
+
+    public void RefreshPotionData()
+    {
+        if (potionData == null)
+        {
+            Debug.LogWarning("PotionData is not assigned.", this);
+            return;
+        }
+
+        potionData.InputRndomData(IsRandomInfo,IsRandomImg,IsRandomType);
+        GetData();
+        ApplyPotionColor();
+    }
+
+    public void ResetPotionColor()
+    {
+        GetData();
+        ApplyPotionColor();
+    }
+
+    private void ApplyPotionColor()
+    {
+        if (posionRender == null)
+        {
+            return;
+        }
+
+        posionRender.color = potionColor;
+    }
 }

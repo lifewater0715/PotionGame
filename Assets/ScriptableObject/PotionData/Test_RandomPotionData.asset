@@ -34,3 +34,6 @@ MonoBehaviour:
   RandomPotinonPosion:
   - 1.5
   - 4.3
+  RandomPotionBoiledGlow: 0001
+  RandomPotionShakedColorChange: 0001
+  RandomPotionCandleChange: 0001

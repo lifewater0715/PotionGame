@@ -17,4 +17,9 @@ public class RandomPotionData : ScriptableObject
     [Header ("랜덤 특징 속성")]
     public List<float> RandomPotinonAcid = new List<float>();
     public List<float> RandomPotinonPosion = new List<float>();
+
+    [Header ("랜덤 작업 결과")]
+    public List<bool> RandomPotionBoiledGlow = new List<bool>();
+    public List<bool> RandomPotionShakedColorChange = new List<bool>();
+    public List<bool> RandomPotionCandleChange = new List<bool>();
 }

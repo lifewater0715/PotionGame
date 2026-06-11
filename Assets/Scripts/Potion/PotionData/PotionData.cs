@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PotionData", menuName = "Scriptable Objects/PotionData")]
@@ -19,6 +18,11 @@ public class PotionData : ScriptableObject
     [Header ("포션 속성")]
     public float Acid;
     public float Posion;
+
+    [Header ("포션 작업 결과")]
+    public bool OnBoiledGlow;
+    public bool OnShakedColorChange;
+    public bool OnCandleChange;
 
     [Header ("랜덤 속성")]
     public bool OnrandomInfo;
@@ -47,7 +51,30 @@ public class PotionData : ScriptableObject
         if(OnRandomType)
         {
             Acid = RandData.RandomPotinonAcid[UnityEngine.Random.Range(0,RandData.RandomPotinonAcid.Count)];
-            Posion = RandData.RandomPotinonPosion[UnityEngine.Random.Range(0,RandData.RandomPotinonPosion.Count)];  
+            Posion = RandData.RandomPotinonPosion[UnityEngine.Random.Range(0,RandData.RandomPotinonPosion.Count)];
+            OnBoiledGlow = GetRandomBool(RandData.RandomPotionBoiledGlow, OnBoiledGlow);
+            OnShakedColorChange = GetRandomBool(RandData.RandomPotionShakedColorChange, OnShakedColorChange);
+            OnCandleChange = GetRandomBool(RandData.RandomPotionCandleChange, OnCandleChange);
         }
+    }
+
+    private bool GetRandomBool(bool[] randomValues, bool fallbackValue)
+    {
+        if (randomValues == null || randomValues.Length == 0)
+        {
+            return fallbackValue;
+        }
+
+        return randomValues[UnityEngine.Random.Range(0, randomValues.Length)];
+    }
+
+    private bool GetRandomBool(System.Collections.Generic.List<bool> randomValues, bool fallbackValue)
+    {
+        if (randomValues == null || randomValues.Count == 0)
+        {
+            return fallbackValue;
+        }
+
+        return randomValues[UnityEngine.Random.Range(0, randomValues.Count)];
     }
 }
